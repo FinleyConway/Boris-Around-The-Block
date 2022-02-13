@@ -1,1 +1,0 @@
-﻿{"inkVersion":20,"root":[["^Yo, Havent seen you around here before.","\n","^Everyone is having a pinic at the park tomorrow if you would like to join?","\n","ev","str","^Yeah sure, ill see you then!","/str","/ev",{"*":"0.c-0","flg":20},{"c-0":["\n","^oh, cool cya.","\n",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"#f":1}],"listDefs":{}}
