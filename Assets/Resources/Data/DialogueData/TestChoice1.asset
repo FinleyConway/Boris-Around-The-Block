@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestChoice1
   m_EditorClassIdentifier: 
   dialogue:
-  - '*wierd brandon noises????*'
-  dialogueAudio: []
+  - wierd brandon noises?
+  dialogueAudio:
+  - {fileID: 8300000, guid: b2930ac678c1d9942ba5c19efdbfed3f, type: 3}
   responses: []

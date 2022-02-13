@@ -45,7 +45,7 @@ public class DialogueUI : MonoBehaviour
 
             if (dialogueData.HasAudio)
             {
-                soundSystem.PlayDialogueSound(dialogueData.DialogueAudio[i]);
+                soundSystem.PlayDialogueClip(dialogueData.DialogueAudio[i]);
             }
 
             yield return RunTypingEffect(dialogue);
@@ -57,18 +57,19 @@ public class DialogueUI : MonoBehaviour
                 break;
             }
 
+            soundSystem.StopDialougeClip();
             yield return null;
             yield return new WaitUntil(() => inputSystem.OnSelect);
         }
 
         if (dialogueData.HasResponses)
         {
+            soundSystem.StopDialougeClip();
             dialogueResponseHandler.ShowResponses(dialogueData.Responses);
         }
         else
         {
             CloseDialogueBox();
-
         }
     }
 

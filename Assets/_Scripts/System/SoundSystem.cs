@@ -1,91 +1,54 @@
 using UnityEngine;
 
-[System.Serializable]
-public class SoundClips
-{
-    public string name;
-    public AudioClip audioClip;
-    [Range(0f, 1f)]
-    public float volume;
-    [Range(0.1f, 3f)]
-    public float pitch;
-    public float minDistance;
-    public float maxDistance;
-    public bool canSoundLoop;
-    [HideInInspector]
-    public AudioSource source;
-}
-
 public class SoundSystem : PresistentSingleton<SoundSystem>
 {
-    [Range(0, 1f)] public float dialogueVolume;
-    public SoundClips[] soundClipArray;
-    private GameObject oneShotGameObject;
-    private AudioSource oneShotAudioSource;
+    [SerializeField] private AudioSource musicSource, effectSource, dialogueSource;
 
-    // plays 2d sounds
-    public void PlaySound(string sound)
+    // Change overall volume.
+    public void ChangeMasterVolume(float value)
     {
-        if (oneShotGameObject == null)
-        {
-            oneShotGameObject = new GameObject(sound);
-            oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-        }
-        foreach (SoundClips soundClip in soundClipArray)
-        {
-            oneShotAudioSource.volume = soundClip.volume;
-            oneShotAudioSource.pitch = soundClip.pitch;
-            oneShotAudioSource.loop = soundClip.canSoundLoop;
-
-        }
-        oneShotAudioSource.clip = GetAudioClip(sound);
-        oneShotAudioSource.Play();
+        AudioListener.volume = value;
     }
 
-    // play a dialogue audio clip
-    public void PlayDialogueSound(AudioClip sound)
+    // mute/unmute audio sources
+    public void ToggleMusic()
     {
-        if (oneShotGameObject == null)
-        {
-            oneShotGameObject = new GameObject(sound.ToString());
-            oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-        }
-        oneShotAudioSource.volume = dialogueVolume;
-        oneShotAudioSource.clip = sound;
-        oneShotAudioSource.Play();
+        musicSource.mute = !musicSource.mute;
     }
 
-    // plays 3d sounds with modifications
-    public void PlaySound(string sound, Vector3 position)
+    // mute/unmute audio sources
+    public void ToggleEffects()
     {
-        GameObject soundGameObject = new GameObject(sound);
-        soundGameObject.transform.position = position;
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.clip = GetAudioClip(sound);
-        foreach (SoundClips soundClip in soundClipArray)
-        {
-            audioSource.spatialBlend = 1;
-            audioSource.volume = soundClip.volume;
-            audioSource.pitch = soundClip.pitch;
-            audioSource.minDistance = soundClip.minDistance;
-            audioSource.maxDistance = soundClip.maxDistance;
-
-        }
-        audioSource.Play();
-        Destroy(soundGameObject, audioSource.clip.length);
+        effectSource.mute = !effectSource.mute;
     }
 
-    // finds the audio clip in the array
-    private AudioClip GetAudioClip(string sound)
+    // Play sound.
+    public void PlaySound(AudioClip clip)
     {
-        foreach (SoundClips soundClip in soundClipArray)
-        {
-            if (soundClip.name == sound)
-            {
-                return soundClip.audioClip;
-            }
-        }
-        Debug.LogError("Sound" + sound + " was not found :C");
-        return null;
+        effectSource.PlayOneShot(clip);
+    }
+
+    // Play sound with a position.
+    public void PlaySound(AudioClip clip, Vector3 position)
+    {
+        // insta sound object (object pool)
+
+        // assign sound to object
+
+        // set object to position
+
+        // play sound
+    }
+
+    // Play dialouge.
+    public void PlayDialogueClip(AudioClip clip)
+    {
+        dialogueSource.PlayOneShot(clip);
+    }
+
+    // Stops dialouge. - probs a temp function since dialogue clips are not actual dialouge  
+    public void StopDialougeClip()
+    {
+        dialogueSource.Stop();
     }
 }

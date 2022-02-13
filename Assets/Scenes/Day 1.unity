@@ -801,6 +801,14 @@ PrefabInstance:
       propertyPath: dialogueVolume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3289796233371700977, guid: 2fd8b5dc924adf64c9d08c2d4aa161cd, type: 3}
+      propertyPath: soundClipArray.Array.data[0].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2930ac678c1d9942ba5c19efdbfed3f, type: 3}
+    - target: {fileID: 3289796233371700977, guid: 2fd8b5dc924adf64c9d08c2d4aa161cd, type: 3}
+      propertyPath: soundClipArray.Array.data[0].canSoundLoop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3289796235377674353, guid: 2fd8b5dc924adf64c9d08c2d4aa161cd, type: 3}
       propertyPath: m_RootOrder
       value: 8

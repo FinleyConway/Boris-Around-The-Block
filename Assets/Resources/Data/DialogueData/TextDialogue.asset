@@ -15,7 +15,9 @@ MonoBehaviour:
   dialogue:
   - Hello there stranger...
   - Brandon is the name, what brings you here?
-  dialogueAudio: []
+  dialogueAudio:
+  - {fileID: 8300000, guid: b2930ac678c1d9942ba5c19efdbfed3f, type: 3}
+  - {fileID: 8300000, guid: b2930ac678c1d9942ba5c19efdbfed3f, type: 3}
   responses:
   - responseText: Howdy... you die now!!!
     dialogueData: {fileID: 11400000, guid: f6c19b7d9bbc0c6449a6625dd9f5fe8c, type: 2}
