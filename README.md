@@ -15,6 +15,6 @@ Overall, this isnt a bad attempt and was quite good learning experience of makin
     - Now has the ability to do scripted events such as quests that the npc can give you
     - Addable dialogue clips
     - Typewriter Effect
-    - Time based characters (Pnctuation such as ... will not pause for x seconds)
+    - Time based characters (Punctuation such as ... will now pause for x seconds)
     - Multiple Choices which can effect the game (due to being able to do scripted events)
     - Fully customisable 
