@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class DialogueResponseHandler : MonoBehaviour
@@ -38,7 +39,6 @@ public class DialogueResponseHandler : MonoBehaviour
             responseButton.gameObject.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = dialogueResponse.ResponseText;
             responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickResponse(dialogueResponse, responseIndex));
-
             tempResponseButtons.Add(responseButton);
 
             responseBoxHeight += responseButtonTemplate.sizeDelta.y;
@@ -46,6 +46,7 @@ public class DialogueResponseHandler : MonoBehaviour
 
         responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight);
         responseBox.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(tempResponseButtons[0]);
     }
 
     // alt way of not doing OnClick() in inspector but in code and when selecting a choice moves on to the next dialogue option

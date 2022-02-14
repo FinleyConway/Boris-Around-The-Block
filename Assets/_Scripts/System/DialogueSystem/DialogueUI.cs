@@ -11,16 +11,20 @@ public class DialogueUI : MonoBehaviour
 
     private DialogueResponseHandler dialogueResponseHandler;
     private TypeWriterEffect typeWriterEffect;
-    private InputSystem inputSystem;
+    private InputSystems inputSystem;
     private SoundSystem soundSystem;
 
     private void Awake()
     {
         typeWriterEffect = GetComponent<TypeWriterEffect>();
         dialogueResponseHandler = GetComponent<DialogueResponseHandler>();
-        inputSystem = InputSystem.Instance;
-        soundSystem = SoundSystem.Instance;
         CloseDialogueBox();
+    }
+
+    private void Start()
+    {
+        inputSystem = InputSystems.Instance;
+        soundSystem = SoundSystem.Instance;
     }
 
     // opens and starts convo
@@ -47,7 +51,7 @@ public class DialogueUI : MonoBehaviour
             {
                 soundSystem.PlayDialogueClip(dialogueData.DialogueAudio[i]);
             }
-
+            
             yield return RunTypingEffect(dialogue);
 
             dialogueText.text = dialogue;

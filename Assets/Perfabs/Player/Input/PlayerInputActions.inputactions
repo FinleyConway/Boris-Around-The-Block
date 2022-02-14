@@ -236,6 +236,17 @@
                 },
                 {
                     "name": "",
+                    "id": "db5686d1-86f8-46a3-a408-2ee6edd7104d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5c630d72-b56a-46b0-a225-10b16e1a5bcf",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -260,14 +271,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Submit",
-                    "type": "Button",
-                    "id": "61dba161-2e26-4a80-b06a-5bd2932cee29",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Cancel",
                     "type": "Button",
                     "id": "d02bd014-81ff-4401-8b5d-89f73f4958e4",
@@ -280,14 +283,6 @@
                     "type": "PassThrough",
                     "id": "5fab3cd2-de42-4fac-97ef-92159f372b9b",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Click",
-                    "type": "PassThrough",
-                    "id": "f3d39f1a-22e9-471a-9712-48a5723ad7c0",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -528,17 +523,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
-                    "path": "*/{Submit}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
                     "path": "*/{Cancel}",
                     "interactions": "",
@@ -556,17 +540,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Point",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4faf7dc9-b979-4210-aa8c-e808e1ef89f5",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

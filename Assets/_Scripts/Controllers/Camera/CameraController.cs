@@ -16,12 +16,12 @@ public class CameraController : MonoBehaviour
     private float xRotation;
 
     public Camera cam { get; private set; }
-    private InputSystem inputSystem;
+    private InputSystems inputSystem;
     [SerializeField] private DialogueUI dialogueUI;
 
     private void Start()
     {
-        inputSystem = InputSystem.Instance;
+        inputSystem = InputSystems.Instance;
         cam = Camera.main;
 
         isSelfRelative = true;
@@ -35,7 +35,6 @@ public class CameraController : MonoBehaviour
         CameraLookRotationHandler();
 
         cam.transform.rotation = Quaternion.Euler(new Vector2(cam.transform.rotation.eulerAngles.x, CameraHolder.transform.parent.rotation.eulerAngles.y));
-        //cam.transform.rotation *= Quaternion.Euler(new Vector3(CameraHolder.transform.rotation.eulerAngles.x, 0, CameraHolder.transform.rotation.eulerAngles.z));
         cam.transform.localPosition = CameraHolder.position;
     }
 

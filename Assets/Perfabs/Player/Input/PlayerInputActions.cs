@@ -249,6 +249,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""db5686d1-86f8-46a3-a408-2ee6edd7104d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5c630d72-b56a-46b0-a225-10b16e1a5bcf"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -273,14 +284,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Submit"",
-                    ""type"": ""Button"",
-                    ""id"": ""61dba161-2e26-4a80-b06a-5bd2932cee29"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""d02bd014-81ff-4401-8b5d-89f73f4958e4"",
@@ -293,14 +296,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""5fab3cd2-de42-4fac-97ef-92159f372b9b"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Click"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""f3d39f1a-22e9-471a-9712-48a5723ad7c0"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -541,17 +536,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc"",
-                    ""path"": ""*/{Submit}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Submit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""82627dcc-3b13-4ba9-841d-e4b746d6553e"",
                     ""path"": ""*/{Cancel}"",
                     ""interactions"": """",
@@ -569,17 +553,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Point"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4faf7dc9-b979-4210-aa8c-e808e1ef89f5"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -692,10 +665,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
-        m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
-        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
@@ -814,10 +785,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Navigate;
-    private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Cancel;
     private readonly InputAction m_UI_Point;
-    private readonly InputAction m_UI_Click;
     private readonly InputAction m_UI_ScrollWheel;
     private readonly InputAction m_UI_MiddleClick;
     private readonly InputAction m_UI_RightClick;
@@ -826,10 +795,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         private @PlayerInputActions m_Wrapper;
         public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
-        public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputAction @Point => m_Wrapper.m_UI_Point;
-        public InputAction @Click => m_Wrapper.m_UI_Click;
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
@@ -845,18 +812,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
-                @Submit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
-                @Submit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
-                @Submit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Cancel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
                 @Point.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
                 @Point.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
                 @Point.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
-                @Click.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
-                @Click.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
-                @Click.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
                 @ScrollWheel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnScrollWheel;
                 @ScrollWheel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnScrollWheel;
                 @ScrollWheel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnScrollWheel;
@@ -873,18 +834,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
-                @Submit.started += instance.OnSubmit;
-                @Submit.performed += instance.OnSubmit;
-                @Submit.canceled += instance.OnSubmit;
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
                 @Point.started += instance.OnPoint;
                 @Point.performed += instance.OnPoint;
                 @Point.canceled += instance.OnPoint;
-                @Click.started += instance.OnClick;
-                @Click.performed += instance.OnClick;
-                @Click.canceled += instance.OnClick;
                 @ScrollWheel.started += instance.OnScrollWheel;
                 @ScrollWheel.performed += instance.OnScrollWheel;
                 @ScrollWheel.canceled += instance.OnScrollWheel;
@@ -954,10 +909,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
-        void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
-        void OnClick(InputAction.CallbackContext context);
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);

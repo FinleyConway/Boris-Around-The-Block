@@ -3,7 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController), typeof(CameraController))]
 public class PlayerController : MonoBehaviour
 {
-    #region Movement Variables
+    public AudioClip clip;
+
+    #region Player Variables
     public float CurrentMovementSpeed { get; set; }
     private float movementSpeed;
     private float velocityY;
@@ -12,8 +14,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentDirection = Vector3.zero;
     private Vector2 currentDirectionVelocity = Vector2.zero;
     private Vector3 velocity = Vector3.zero;
-    private Vector3 RecordedMoveToPos;
-    private Vector3 RecordedStartToPos;
     #endregion
 
     #region State Variables
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController Controller { get; private set; }
     public CameraController CameraController { get; private set; }
-    public InputSystem InputSystem { get; private set; }
+    public InputSystems InputSystem { get; private set; }
     public DialogueUI DialogueUI => dialogueUI;
     public IInteractable Interactable { get; set; }
     #endregion
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         Controller = GetComponent<CharacterController>();
         CameraController = GetComponent<CameraController>();
-        InputSystem = InputSystem.Instance;
+        InputSystem = InputSystems.Instance;
 
         StateMachine.Initialize(IdleState);
     }
@@ -63,6 +63,11 @@ public class PlayerController : MonoBehaviour
         GravityHandler();
         SetMovementSpeed();
         DialogueHandler();
+
+        if (InputSystem.OnSelect)
+        {
+            SoundSystem.Instance.PlaySound(clip, transform.position);
+        }
     }
 
     private void FixedUpdate()
